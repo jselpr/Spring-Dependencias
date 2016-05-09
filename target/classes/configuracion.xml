@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"        
+        xmlns:context="http://www.springframework.org/schema/context"        
+        xmlns:util="http://www.springframework.org/schema/util"        
+        xmlns:jee="http://www.springframework.org/schema/jee"        
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"        
+        xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+        ">
+    <context:property-placeholder location="/datos.properties"/>
+    <context:component-scan base-package="es.exes.victor.spring.dependencias" />
+    
+    
+    <bean id="objeto" class="java.util.Date"/>
+    <bean id="objeto2" class="java.util.Date">
+        <constructor-arg index="0" value="12" />
+        <constructor-arg index="1" value="12" />
+        <constructor-arg index="2" value="12" />
+    </bean>
+    
+    <util:list id="lista">
+        <bean id="objeto3" class="java.util.Date"/>
+        <ref bean="objeto"/> 
+    </util:list>
+    
+    <util:list id="lista2">
+        <bean class="es.exes.victor.spring.dependencias.Circulo">
+            <property name="radio" value="3"/>
+        </bean>
+    </util:list>
+        
+    <bean id="objeto4" class="java.util.Date">        
+        <property name="year" value="104"></property>
+        <!--property name="year" ref=""></property-->
+    </bean>
+
+    
+        
+</beans>
